@@ -12,12 +12,18 @@
     "typescript": "^2.9.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepublishOnly": "tsc"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/unsplash/react-progressive-enhancement.git"
   },
+  "contributors": [
+    {
+      "name": "Sami Jaber",
+      "email": "jabersami@gmail.com"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/unsplash/react-progressive-enhancement/issues"
