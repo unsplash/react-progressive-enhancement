@@ -12,7 +12,8 @@
     "typescript": "^2.9.1"
   },
   "scripts": {
-    "prepublishOnly": "tsc"
+    "compile": "tsc",
+    "prepublishOnly": "npm run compile"
   },
   "repository": {
     "type": "git",
