@@ -4,9 +4,9 @@ import { ProgressiveEnhancementProp, Provider, defaultValue } from './context';
 
 import { getDisplayName } from './helpers';
 
-export const enableProgressiveEnhancementsOnMount = function<Props>(
+export const enableProgressiveEnhancementsOnMount = <Props extends {}>(
   ComposedComponent: React.ComponentType<Props>,
-): React.ComponentType<Props> {
+): React.ComponentType<Props> => {
   class ProgressiveEnhancementProvider extends React.Component<Props, ProgressiveEnhancementProp> {
     static displayName = `ProgressiveEnhancementProvider(${getDisplayName(ComposedComponent)})`;
 

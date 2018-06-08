@@ -3,12 +3,11 @@ import * as React from 'react';
 import { Consumer, ProgressiveEnhancementProp } from './context';
 import { ObjectOmit, getDisplayName } from './helpers';
 
-export const withIsEnhanced = function<OwnProps extends ProgressiveEnhancementProp>(
+export const withIsEnhanced = <OwnProps extends ProgressiveEnhancementProp>(
   ComposedComponent: React.ComponentType<OwnProps>,
-) {
-  type OwnPropsWithoutProgressiveEnhancementProp = ObjectOmit<OwnProps, ProgressiveEnhancementProp>;
-
-  const ComponentWithIsEnhanced: React.SFC<OwnPropsWithoutProgressiveEnhancementProp> = props => (
+) => {
+  type ComponentWithIsEnhancedType = React.SFC<ObjectOmit<OwnProps, ProgressiveEnhancementProp>>;
+  const ComponentWithIsEnhanced: ComponentWithIsEnhancedType = props => (
     <Consumer>
       {({ isEnhanced }) => <ComposedComponent isEnhanced={isEnhanced} {...props} />}
     </Consumer>
@@ -19,7 +18,9 @@ export const withIsEnhanced = function<OwnProps extends ProgressiveEnhancementPr
   return ComponentWithIsEnhanced;
 };
 
-export const progressivelyEnhance = function<Props>(ComposedComponent: React.ComponentType<Props>) {
+export const progressivelyEnhance = <Props extends {}>(
+  ComposedComponent: React.ComponentType<Props>,
+) => {
   const ProgressivelyEnhance: React.SFC<Props> = props => (
     <Consumer>
       {({ isEnhanced }) => (isEnhanced ? <ComposedComponent {...props} /> : null)}
