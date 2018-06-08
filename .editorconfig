@@ -19,3 +19,7 @@ trim_trailing_whitespace = false
 # https://stackoverflow.com/questions/50258565/git-editing-hunks-fails-when-file-has-other-hunks/50275053#50275053
 [*.diff]
 trim_trailing_whitespace = false
+
+[*.{ts,tsx}]
+# https://github.com/editorconfig/editorconfig/wiki/EditorConfig-Properties#max_line_length
+max_line_length = 100
