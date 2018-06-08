@@ -4,7 +4,7 @@ import { ProgressiveEnhancementProp, Provider, defaultValue } from './context';
 
 import { getDisplayName } from './helpers';
 
-export const wrapWithProvider = function<Props>(
+export const enableProgressiveEnhancementsOnMount = function<Props>(
   ComposedComponent: React.ComponentType<Props>,
 ): React.ComponentType<Props> {
   class ProgressiveEnhancementProvider extends React.Component<Props, ProgressiveEnhancementProp> {
