@@ -18,6 +18,9 @@
     "type": "git",
     "url": "git+https://github.com/unsplash/react-progressive-enhancement.git"
   },
+  "engines": {
+    "yarn": "1.5.1"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/unsplash/react-progressive-enhancement/issues"
