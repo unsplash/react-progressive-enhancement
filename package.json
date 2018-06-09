@@ -13,7 +13,7 @@
   },
   "scripts": {
     "compile": "tsc",
-    "prepublishOnly": "npm run compile"
+    "prepublishOnly": "npm run compile",
     "test": "echo \"Error: no test specified\" && exit 0"
   },
   "repository": {
