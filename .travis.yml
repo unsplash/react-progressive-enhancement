@@ -4,7 +4,7 @@ node_js:
   - '9.8.0'
 before_install:
   # This should be the same as package.json’s `engines.yarn`
-  - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.5.1
+  - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.6.0
   # Guarantees that TravisCI uses our version and not its own
   # https://yarnpkg.com/en/docs/install-ci#travis-tab
   - export PATH=$HOME/.yarn/bin:$PATH

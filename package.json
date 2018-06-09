@@ -28,8 +28,7 @@
   "scripts": {
     "test": "mocha -r ts-node/register -r jsdom-global/register -r src/tests/config/setup-enzyme.ts src/tests/index.tsx",
     "compile": "tsc",
-    "prepublishOnly": "npm run compile",
-    "test": "echo \"Error: no test specified\" && exit 0"
+    "prepublishOnly": "npm run compile"
   },
   "repository": {
     "type": "git",
@@ -42,7 +41,7 @@
     }
   ],
   "engines": {
-    "yarn": "1.5.1"
+    "yarn": "^1.5.1"
   },
   "license": "MIT",
   "bugs": {
