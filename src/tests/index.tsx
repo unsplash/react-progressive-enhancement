@@ -1,9 +1,8 @@
 import * as React from 'react';
-
-import { progressivelyEnhance, withIsEnhanced } from '../consumer';
-
 import { expect } from 'chai';
 import { mount } from 'enzyme';
+
+import { progressivelyEnhance, withIsEnhanced } from '../consumer';
 import { enableProgressiveEnhancementsOnMount } from '../provider';
 
 const TestComponent: React.SFC<{ name: string }> = ({ name }) => <div>{name}</div>;
