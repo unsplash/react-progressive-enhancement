@@ -12,11 +12,14 @@
     "typescript": "^2.9.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 0"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/unsplash/react-progressive-enhancement.git"
+  },
+  "engines": {
+    "yarn": "1.5.1"
   },
   "license": "MIT",
   "bugs": {
