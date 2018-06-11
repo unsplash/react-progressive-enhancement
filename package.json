@@ -26,8 +26,9 @@
     "typescript": "^2.9.1"
   },
   "scripts": {
-    "test": "mocha -r ts-node/register -r jsdom-global/register -r src/tests/config/setup-enzyme.ts src/tests/index.tsx",
+    "test:mocha": "mocha -r ts-node/register -r jsdom-global/register -r src/tests/config/setup-enzyme.ts src/tests/index.tsx",
     "compile": "tsc",
+    "test": "npm run test:mocha && npm run compile",
     "prepublishOnly": "npm run compile"
   },
   "repository": {
