@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { expect } from 'chai';
-import { mount } from 'enzyme';
+import { mount, ReactWrapper, StatelessComponent } from 'enzyme';
 
 import { progressivelyEnhance, withIsEnhanced } from '../consumer';
+import { ProgressiveEnhancementProp } from '../context';
 import { enableProgressiveEnhancementsOnMount } from '../provider';
 
 const TestComponent: React.SFC<{ name: string }> = ({ name }) => <div>{name}</div>;
@@ -11,7 +12,10 @@ const ProgressivelyEnhancedTestComponent = progressivelyEnhance(TestComponent, {
   LoadingComponent: Loading,
 });
 
-const ComponentWithIsEnhanced: React.SFC<{ name: string; isEnhanced: boolean }> = ({ name }) => (
+const isEnhancedKey: keyof Pick<ProgressiveEnhancementProp, 'isEnhanced'> = 'isEnhanced';
+
+type Props = { name: string; isEnhanced: boolean };
+const ComponentWithIsEnhanced: StatelessComponent<Props> = ({ name }) => (
   <div>{name}</div>
 );
 const WithIsEnhancedTestComponent = withIsEnhanced(ComponentWithIsEnhanced);
@@ -25,28 +29,28 @@ const TestApp = () => (
 
 describe('Tests', () => {
   describe('Consumer', () => {
-    describe('progressivelyEnhance', () => {
+    describe(progressivelyEnhance.name, () => {
       it('renders Loading component when `isEnhanced` is false', () => {
         const wrapper = mount(<ProgressivelyEnhancedTestComponent name={'foo'} />);
 
         expect(wrapper.find(Loading).length).to.equal(1);
       });
     });
-    describe('withIsEnhanced', () => {
+    describe(withIsEnhanced.name, () => {
       it('provides `isEnhanced` prop to component', () => {
         const wrapper = mount(<WithIsEnhancedTestComponent name={'foo'} />);
-        expect(wrapper.find(ComponentWithIsEnhanced).prop('isEnhanced')).to.equal(false);
+        expect(wrapper.find(ComponentWithIsEnhanced).prop(isEnhancedKey)).to.equal(false);
       });
     });
   });
 
   describe('Provider', () => {
-    describe('enableProgressiveEnhancementsOnMount', () => {
+    describe(enableProgressiveEnhancementsOnMount.name, () => {
       it('`isEnhanced` is false when App is not wrapped with enableProgressiveEnhancementsOnMount', () => {
         const wrapperWithoutProgressiveEnhancements = mount(<TestApp />);
         expect(wrapperWithoutProgressiveEnhancements.find(Loading).length).to.equal(1);
         expect(
-          wrapperWithoutProgressiveEnhancements.find(ComponentWithIsEnhanced).prop('isEnhanced'),
+          wrapperWithoutProgressiveEnhancements.find(ComponentWithIsEnhanced).prop(isEnhancedKey),
         ).to.equal(false);
       });
       it('sets `isEnhanced` to true on mount and renders Component', () => {
@@ -54,7 +58,7 @@ describe('Tests', () => {
         const wrapper = mount(<WrappedTree />);
 
         expect(wrapper.find(TestComponent).length).to.equal(1);
-        expect(wrapper.find(ComponentWithIsEnhanced).prop('isEnhanced')).to.equal(true);
+        expect(wrapper.find(ComponentWithIsEnhanced).prop(isEnhancedKey)).to.equal(true);
       });
     });
   });
