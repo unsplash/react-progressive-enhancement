@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "jsx": "react",
+    "declaration": true,
+    "outDir": "./dist",
+    "strict": true
+  },
+  "files": ["./index.ts"]
+}

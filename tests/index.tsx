@@ -2,9 +2,9 @@ import * as React from 'react';
 import { expect } from 'chai';
 import { mount, ReactWrapper, StatelessComponent } from 'enzyme';
 
-import { progressivelyEnhance, withIsEnhanced } from '../consumer';
-import { ProgressiveEnhancementProp } from '../context';
-import { enableProgressiveEnhancementsOnMount } from '../provider';
+import { progressivelyEnhance, withIsEnhanced } from '../src/consumer';
+import { ProgressiveEnhancementProp } from '../src/context';
+import { enableProgressiveEnhancementsOnMount } from '../src/provider';
 
 const TestComponent: React.SFC<{ name: string }> = ({ name }) => <div>{name}</div>;
 const Loading: React.SFC<{}> = () => <div> Loading!!! </div>;

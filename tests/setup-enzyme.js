@@ -1,4 +1,4 @@
-import * as Enzyme from 'enzyme';
+const Enzyme = require('enzyme');
 const ReactSixteenAdapter = require('./ReactSixteenAdapter').ReactSixteenAdapter;
 
 Enzyme.configure({ adapter: new ReactSixteenAdapter() });
