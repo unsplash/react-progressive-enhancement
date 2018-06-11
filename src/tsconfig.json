@@ -4,7 +4,7 @@
     "target": "es5",
     "jsx": "react",
     "declaration": true,
-    "outDir": "./dist",
+    "outDir": "../dist",
     "strict": true
   },
   "files": ["./index.ts"]
