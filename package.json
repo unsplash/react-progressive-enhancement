@@ -4,6 +4,10 @@
   "description": "React Context that progressively enhances components",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist/",
+    "yarn.lock"
+  ],
   "dependencies": {
     "@types/react": "^16.3.17",
     "react": "^16.4.0"
