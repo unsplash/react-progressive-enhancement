@@ -2,6 +2,7 @@
 // https://github.com/diegohaz/constate/blob/93b7b5b469be4521784b51380f49e6589c3e56b9/test/ReactSixteenAdapter.js
 // It adds support for React's Context API in v16.3+
 // https://github.com/airbnb/enzyme/issues/1509#issuecomment-377726374
+// https://github.com/airbnb/enzyme/issues/1553
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
