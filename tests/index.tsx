@@ -25,7 +25,7 @@ const TestApp = () => (
 describe('Tests', () => {
   describe('Consumer', () => {
     describe(progressivelyEnhance.name, () => {
-      it('renders Loading component when `isEnhanced` is false', () => {
+      it('does not renders TestComponent when `isEnhanced` is false', () => {
         const wrapper = mount(<ProgressivelyEnhancedTestComponent name={'foo'} />);
 
         expect(wrapper.find(TestComponent).length).to.equal(0);
