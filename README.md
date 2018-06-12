@@ -94,7 +94,7 @@ An HOC that provides the `isEnhanced` prop to `ComposedComponent`.
 (ComposedComponent: React.Component) => React.Component
 ```
 
-An HOC that defers rendering `ComposedComponent` till after the first client render.
+An HOC that defers rendering `ComposedComponent` until after the first client render.
 
 #### Consumer, Provider
 ```tsx
