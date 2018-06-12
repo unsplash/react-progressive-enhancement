@@ -32,8 +32,8 @@
     "react": "^16.4.0"
   },
   "scripts": {
-    "test:mocha": "cd tests && mocha -r ts-node/register -r jsdom-global/register -r ./setup-enzyme.js ./index.tsx",
-    "compile": "tsc -p src/tsconfig.json",
+    "test:mocha": "cd tests && mocha --require ts-node/register --require jsdom-global/register --require ./setup-enzyme.js ./index.tsx",
+    "compile": "tsc --project src/tsconfig.json",
     "test": "npm run test:mocha && npm run compile",
     "prepublishOnly": "npm run compile"
   },
