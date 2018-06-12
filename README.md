@@ -1,10 +1,12 @@
 # react-progressive-enhancement
-_A handy React Context for your SSR needs!_
+_A handy collection of HOCs for universally rendered apps 🤩_
 
 <a href="https://www.npmjs.org/package/react-progressive-enhancement"><img src="https://img.shields.io/npm/v/react-progressive-enhancement.svg" alt="npm"></a>
 [![Build Status](https://travis-ci.com/unsplash/react-progressive-enhancement.svg?branch=master)](https://travis-ci.com/unsplash/react-progressive-enhancement)
 
-TL;DR This React Context sets an `isEnhanced` boolean to `true` on your App's root `componentDidMount`, letting you know that you're on your client's second render (or later). When implementing SSR, this can help you easily avoid duplicate data-fetching requests, but also delay the rendering of components that you can't/don't want to render on the server.
+TL;DR In universally rendered React apps, it is common to branch data-fetching and component-rendering depending on the environment (server or client), and defer rendering (a.k.a. "progressively enhance") some components. However, we must ensure the first client render matches the server render.
+
+This module achieves all the above by tracking whether or not the render mode is "enhanced" with an `isEnhanced` boolean (`true` only after first client render, otherwise `false`), which is accessed through a `withIsEnhanced` HOC. Additionally a `progressivelyEnhanced` HOC is provided which only renders the composed component for enhanced renders.
 
 For more info, check out [this blog post](https://medium.com/@samijaber/react-progressive-enhancement-a-handy-react-context-for-your-ssr-conditional-rendering-needs-904f689768cf).
 
@@ -12,8 +14,7 @@ For more info, check out [this blog post](https://medium.com/@samijaber/react-pr
 
 * No dependencies (other than React ^16.3)
 * Written in TypeScript (type-annotated)
-* Very simple to use
-* Easily extensible through exported `Consumer`/`Provider`
+* Easily extensible through the exported React Context's `Consumer` & `Provider`
 
 ## Install
 
@@ -24,8 +25,6 @@ npm install react-progressive-enhancement
 ```
 
 ## Usage
-
-Here's a (rather overly simplistic) example showing how to use all of the HOCs:
 
 * Root.jsx:
 
@@ -64,7 +63,7 @@ class PhotoRoute extends React.Component {
     return (
       <div>
         <Photo />
-        {/* This component will only render after the first client-render */}
+        {/* This component will only render after the first client render */}
         <ProgressivelyEnhancedRelatedContent />
       </div>
     );
@@ -92,10 +91,10 @@ An HOC that provides the `isEnhanced` prop to `ComposedComponent`.
 
 #### progressivelyEnhance
 ```tsx
-(ComposedComponent: React.Component, options?: { LoadingComponent?: React.Component }) => React.Component
+(ComposedComponent: React.Component) => React.Component
 ```
 
-An HOC that renders `ComposedComponent` as a progressive-enhancement, i.e. after the first client render. If `LoadingComponent` is provided, it will be rendered until progressive enhancements are enabled.
+An HOC that defers rendering `ComposedComponent` until after the first client render.
 
 #### Consumer, Provider
 ```tsx

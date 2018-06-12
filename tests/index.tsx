@@ -7,17 +7,12 @@ import { ProgressiveEnhancementProp } from '../src/context';
 import { enableProgressiveEnhancementsOnMount } from '../src/provider';
 
 const TestComponent: React.SFC<{ name: string }> = ({ name }) => <div>{name}</div>;
-const Loading: React.SFC<{}> = () => <div> Loading!!! </div>;
-const ProgressivelyEnhancedTestComponent = progressivelyEnhance(TestComponent, {
-  LoadingComponent: Loading,
-});
+const ProgressivelyEnhancedTestComponent = progressivelyEnhance(TestComponent);
 
 const isEnhancedKey: keyof Pick<ProgressiveEnhancementProp, 'isEnhanced'> = 'isEnhanced';
 
 type Props = { name: string; isEnhanced: boolean };
-const ComponentWithIsEnhanced: StatelessComponent<Props> = ({ name }) => (
-  <div>{name}</div>
-);
+const ComponentWithIsEnhanced: StatelessComponent<Props> = ({ name }) => <div>{name}</div>;
 const WithIsEnhancedTestComponent = withIsEnhanced(ComponentWithIsEnhanced);
 
 const TestApp = () => (
@@ -30,10 +25,10 @@ const TestApp = () => (
 describe('Tests', () => {
   describe('Consumer', () => {
     describe(progressivelyEnhance.name, () => {
-      it('renders Loading component when `isEnhanced` is false', () => {
+      it('does not render TestComponent when `isEnhanced` is false', () => {
         const wrapper = mount(<ProgressivelyEnhancedTestComponent name={'foo'} />);
 
-        expect(wrapper.find(Loading).length).to.equal(1);
+        expect(wrapper.find(TestComponent).length).to.equal(0);
       });
     });
     describe(withIsEnhanced.name, () => {
@@ -48,7 +43,7 @@ describe('Tests', () => {
     describe(enableProgressiveEnhancementsOnMount.name, () => {
       it('`isEnhanced` is false when App is not wrapped with enableProgressiveEnhancementsOnMount', () => {
         const wrapperWithoutProgressiveEnhancements = mount(<TestApp />);
-        expect(wrapperWithoutProgressiveEnhancements.find(Loading).length).to.equal(1);
+        expect(wrapperWithoutProgressiveEnhancements.find(TestComponent).length).to.equal(0);
         expect(
           wrapperWithoutProgressiveEnhancements.find(ComponentWithIsEnhanced).prop(isEnhancedKey),
         ).to.equal(false);
