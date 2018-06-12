@@ -4,7 +4,7 @@ _A handy React Context for your SSR needs!_
 <a href="https://www.npmjs.org/package/react-progressive-enhancement"><img src="https://img.shields.io/npm/v/react-progressive-enhancement.svg" alt="npm"></a>
 [![Build Status](https://travis-ci.com/unsplash/react-progressive-enhancement.svg?branch=master)](https://travis-ci.com/unsplash/react-progressive-enhancement)
 
-TL;DR This React Context sets an `isEnhanced` boolean to `true` on your App's root `componentDidMount`, letting you know that you're on your client's second render (or later). When implementing SSR, this can help you easily avoid duplicate requests but also delay the rendering of components that you can't/don't want to render on the server.
+TL;DR This React Context sets an `isEnhanced` boolean to `true` on your App's root `componentDidMount`, letting you know that you're on your client's second render (or later). When implementing SSR, this can help you easily avoid duplicate data-fetching requests, but also delay the rendering of components that you can't/don't want to render on the server.
 
 For more info, check out [this blog post](https://medium.com/@samijaber/react-progressive-enhancement-a-handy-react-context-for-your-ssr-conditional-rendering-needs-904f689768cf).
 
