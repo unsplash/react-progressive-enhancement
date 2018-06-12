@@ -8,7 +8,7 @@ TL;DR In universally rendered React apps, it is common to branch data-fetching a
 
 This module achieves all the above by tracking whether or not the render mode is "enhanced" with an `isEnhanced` boolean (`true` only after first client render, otherwise `false`), which is accessed through a `withIsEnhanced` HOC. Additionally a `progressivelyEnhanced` HOC is provided which only renders the composed component for enhanced renders.
 
-For more info, check out [this blog post](https://medium.com/@samijaber/react-progressive-enhancement-a-handy-react-context-for-your-ssr-conditional-rendering-needs-904f689768cf).
+For more info, check out [this blog post](https://medium.com/unsplash/react-progressive-enhancement-a-handy-collection-of-hocs-for-universally-rendered-apps-904f689768cf).
 
 ## Features
 
