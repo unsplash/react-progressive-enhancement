@@ -92,10 +92,10 @@ An HOC that provides the `isEnhanced` prop to `ComposedComponent`.
 
 #### progressivelyEnhance
 ```tsx
-(ComposedComponent: React.Component, options?: { LoadingComponent?: React.Component }) => React.Component
+(ComposedComponent: React.Component) => React.Component
 ```
 
-An HOC that renders `ComposedComponent` as a progressive-enhancement, i.e. after the first client render. If `LoadingComponent` is provided, it will be rendered until progressive enhancements are enabled.
+An HOC that deferes rendering `ComposedComponent` till the second client render.
 
 #### Consumer, Provider
 ```tsx
