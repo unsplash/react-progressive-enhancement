@@ -1,7 +1,9 @@
 import * as React from 'react';
 
-import { Consumer, ProgressiveEnhancementProp } from './context';
+import { context, ProgressiveEnhancementProp } from './context';
 import { ObjectOmit, getDisplayName } from './helpers';
+
+const { Consumer } = context;
 
 export const withIsEnhanced = <OwnProps extends ProgressiveEnhancementProp>(
   ComposedComponent: React.ComponentType<OwnProps>,
