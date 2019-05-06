@@ -8,6 +8,6 @@ export const defaultValue: ProgressiveEnhancementProp = {
   isEnhanced: false,
 };
 
-const { Provider, Consumer } = React.createContext(defaultValue);
+export const context = React.createContext(defaultValue);
 
-export { Provider, Consumer };
+context.displayName = 'ProgressiveEnhancementContext';

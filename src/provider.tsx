@@ -1,7 +1,9 @@
 import * as React from 'react';
 
-import { ProgressiveEnhancementProp, Provider, defaultValue } from './context';
+import { ProgressiveEnhancementProp, context, defaultValue } from './context';
 import { getDisplayName } from './helpers';
+
+const { Provider } = context;
 
 export const enableProgressiveEnhancementsOnMount = <Props extends {}>(
   ComposedComponent: React.ComponentType<Props>,

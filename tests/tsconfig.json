@@ -5,7 +5,14 @@
     "jsx": "react",
     "allowJs": true,
     "strict": true,
-    "lib": ["dom", "es5", "scripthost", "es2015.core"]
+    "lib": [
+      // start defaults
+      "dom",
+      "es5",
+      // end defaults
+      "scripthost",
+      "es2015.core"
+    ]
   },
   "include": ["./**/*"]
 }
