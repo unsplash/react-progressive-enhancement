@@ -5,7 +5,7 @@ import { getDisplayName } from './helpers';
 
 const { Provider } = context;
 
-export const enableProgressiveEnhancementsOnMount = <Props extends {}>(
+export const enableProgressiveEnhancementsOnMount = <Props extends unknown>(
   ComposedComponent: React.ComponentType<Props>,
 ): React.ComponentType<Props> => {
   class ProgressiveEnhancementProvider extends React.Component<Props, ProgressiveEnhancementProp> {

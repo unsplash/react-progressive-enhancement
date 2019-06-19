@@ -30,7 +30,7 @@ export const withIsEnhanced = <OwnProps extends ProgressiveEnhancementProp>(
   return ComponentWithIsEnhanced;
 };
 
-export const progressivelyEnhance = <Props extends {}>(
+export const progressivelyEnhance = <Props extends unknown>(
   ComposedComponent: React.ComponentType<Props>,
 ) => {
   const ProgressivelyEnhance: React.SFC<Props> = props => (
