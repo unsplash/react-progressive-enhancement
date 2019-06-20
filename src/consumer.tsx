@@ -11,7 +11,17 @@ export const withIsEnhanced = <OwnProps extends ProgressiveEnhancementProp>(
   type ComponentWithIsEnhancedType = React.SFC<ObjectOmit<OwnProps, ProgressiveEnhancementProp>>;
   const ComponentWithIsEnhanced: ComponentWithIsEnhancedType = props => (
     <Consumer>
-      {({ isEnhanced }) => <ComposedComponent isEnhanced={isEnhanced} {...props} />}
+      {({ isEnhanced }) => (
+        <ComposedComponent
+          {
+            // Cast is workaround for https://github.com/microsoft/TypeScript/issues/28884
+            ...{
+              isEnhanced,
+              ...props,
+            } as OwnProps
+          }
+        />
+      )}
     </Consumer>
   );
 
@@ -20,7 +30,7 @@ export const withIsEnhanced = <OwnProps extends ProgressiveEnhancementProp>(
   return ComponentWithIsEnhanced;
 };
 
-export const progressivelyEnhance = <Props extends {}>(
+export const progressivelyEnhance = <Props extends unknown>(
   ComposedComponent: React.ComponentType<Props>,
 ) => {
   const ProgressivelyEnhance: React.SFC<Props> = props => (
