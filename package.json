@@ -9,7 +9,7 @@
     "yarn.lock"
   ],
   "dependencies": {
-    "@types/react": "^16.8.15"
+    "@types/react": "^17.0.0"
   },
   "devDependencies": {
     "@types/chai": "^4.1.3",
