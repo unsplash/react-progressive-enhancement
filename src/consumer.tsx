@@ -8,17 +8,17 @@ const { Consumer } = context;
 export const withIsEnhanced = <OwnProps extends ProgressiveEnhancementProp>(
   ComposedComponent: React.ComponentType<OwnProps>,
 ) => {
-  type ComponentWithIsEnhancedType = React.SFC<ObjectOmit<OwnProps, ProgressiveEnhancementProp>>;
-  const ComponentWithIsEnhanced: ComponentWithIsEnhancedType = props => (
+  type ComponentWithIsEnhancedType = React.FC<ObjectOmit<OwnProps, ProgressiveEnhancementProp>>;
+  const ComponentWithIsEnhanced: ComponentWithIsEnhancedType = (props) => (
     <Consumer>
       {({ isEnhanced }) => (
         <ComposedComponent
           {
             // Cast is workaround for https://github.com/microsoft/TypeScript/issues/28884
-            ...{
+            ...({
               isEnhanced,
               ...props,
-            } as OwnProps
+            } as OwnProps)
           }
         />
       )}
@@ -30,10 +30,10 @@ export const withIsEnhanced = <OwnProps extends ProgressiveEnhancementProp>(
   return ComponentWithIsEnhanced;
 };
 
-export const progressivelyEnhance = <Props extends unknown>(
+export const progressivelyEnhance = <Props,>(
   ComposedComponent: React.ComponentType<Props>,
 ) => {
-  const ProgressivelyEnhance: React.SFC<Props> = props => (
+  const ProgressivelyEnhance: React.FC<Props> = (props) => (
     <Consumer>
       {({ isEnhanced }) => (isEnhanced ? <ComposedComponent {...props} /> : null)}
     </Consumer>
